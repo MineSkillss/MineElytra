@@ -1,0 +1,6 @@
+name: Cupcqkeee
+version: '${project.version}'
+main: me.cupcqkeee.Main
+api-version: 1.19
+authors: [ CUPcqkeee ]
+description: Плагин блокирует наложение починки на элитры
