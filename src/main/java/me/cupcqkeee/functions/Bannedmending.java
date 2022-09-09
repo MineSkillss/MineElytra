@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class Bannedmending implements Listener {
     public Bannedmending(){
     }
@@ -17,7 +19,7 @@ public class Bannedmending implements Listener {
     public void on(PrepareAnvilEvent event) {
         Player p = (Player)event.getView().getPlayer();
         ItemStack stack = event.getResult();
-        if (stack != null && stack.getType() == Material.ELYTRA && stack.getItemMeta().getEnchants().containsKey(Enchantment.MENDING) && !p.hasPermission("MineElytra")) {
+        if (stack != null && stack.getType() == Material.ELYTRA && Objects.requireNonNull(stack.getItemMeta()).getEnchants().containsKey(Enchantment.MENDING) && !p.hasPermission("MineElytra")) {
             event.setResult(new ItemStack(Material.AIR));
             p.sendMessage(ChatColor.RED + "Вы не можете накладывать починку на элитры!");
         }

@@ -1,7 +1,6 @@
 package me.cupcqkeee;
 
 import me.cupcqkeee.functions.Bannedmending;
-import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
@@ -9,26 +8,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 public class Main extends JavaPlugin implements Listener {
-    public Main() {
-    }
+
     @Override
-    public void onEnable() {
-        this.registerEvents();
-        if (this.isEnabled()) {
-            this.getLogger().log(Level.INFO, ChatColor.GREEN + "MineElytra" + ChatColor.AQUA + "v1.0");
-        } else{
-            this.getLogger().log(Level.WARNING, ChatColor.RED + "Непредвиденная ошибка! Обратитесь к разработчику!");
-        }
+    public void onEnable() { // Сообщение либо функция при включении плагина
+        getLogger().info(ChatColor.GREEN + "Плагин MineElytra был успешно включён!");
         }
 
-    private void registerEvents() {
+
+    private void registerEvents() { // Задействовали BannedMending, Да можно и по-другому но я ленивая жопа
         this.getServer().getPluginManager().registerEvents(new Bannedmending(), this);
     }
 
     @Override
-    public void onDisable() {
-
-        this.getLogger().log(Level.SEVERE, ChatColor.YELLOW + "Плагин успешно был выключен");
-
+    public void onDisable() { // Сообщение либо функция при выключении плагина
+        getLogger().info(ChatColor.RED + "Плагин MineElytra был выключен!");
     }
 }
